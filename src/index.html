@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link rel="stylesheet" href="./index.css" />
+        <!-- fa -->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+            integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+    </head>
+    <body class="flex items-center justify-center min-h-screen bg-slate-900">
+        <!-- wrapper -->
+        <div class="w-4/5 max-w-screen-lg p-9 bg-white rounded-lg">
+            <input
+                type="text"
+                id="input"
+                autocomplete="off"
+                class="absolute -z-50 opacity-0"
+            />
+            <!-- content box -->
+            <div class="pt-3 px-5 border border-slate-700 rounded-lg">
+                <!-- typing words -->
+                <div
+                    id="typing-words"
+                    class="typing-words md:text-xl font-mono tracking-widest break-words"
+                ></div>
+                <!-- content -->
+                <div
+                    class="flex justify-between items-end md:items-center gap-5 mt-4 py-3 border-t border-slate-700"
+                >
+                    <ul
+                        class="result-details md:flex justify-between w-full max-w-md"
+                    >
+                        <li class="time flex gap-2 items-center">
+                            <p class="text-xs md:text-lg">Time Left:</p>
+                            <span id="time" class="block text-sm md:text-xl"
+                                ><b>60</b>s</span
+                            >
+                        </li>
+                        <li class="flex gap-2 items-center">
+                            <p class="text-xs md:text-lg">Mistakes:</p>
+                            <span id="mistake" class="block text-sm md:text-xl"
+                                >0</span
+                            >
+                        </li>
+                        <li class="flex gap-2 items-center">
+                            <p class="text-xs md:text-lg">WPM:</p>
+                            <span id="wpm" class="block text-sm md:text-xl"
+                                >0</span
+                            >
+                        </li>
+                        <li class="flex gap-2 items-center">
+                            <p class="text-xs md:text-lg">CPM:</p>
+                            <span id="cpm" class="block text-sm md:text-xl"
+                                >0</span
+                            >
+                        </li>
+                    </ul>
+                    <button
+                        type="button"
+                        id="reset"
+                        title="Reset the current test"
+                    >
+                        <i class="fa-solid fa-arrow-rotate-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <script src="./index.js" type="module"></script>
+    </body>
+</html>
