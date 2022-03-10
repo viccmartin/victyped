@@ -9,10 +9,10 @@
     @apply content-[""] absolute -top-px -bottom-px -left-0.5 w-0.5 bg-yellow-400 animate-pulse;
 }
 .typing-words span.correct {
-    @apply text-green-700 bg-green-200;
+    @apply text-gray-200;
 }
 .typing-words span.incorrect {
-    @apply text-red-700 bg-red-200;
+    @apply text-red-700;
 }
 .typing-words::-webkit-scrollbar {
     width: 0;

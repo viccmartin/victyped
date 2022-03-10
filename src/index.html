@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
         <link rel="stylesheet" href="./index.css" />
-        <!-- fa -->
+        <!-- font awesome -->
         <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
@@ -14,26 +14,107 @@
             crossorigin="anonymous"
             referrerpolicy="no-referrer"
         />
+        <!-- fonts -> Mono = Space mono / Sans = Open Sans -->
+        <link
+            href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&family=Space+Mono&display=swap"
+            rel="stylesheet"
+        />
     </head>
-    <body class="flex items-center justify-center min-h-screen bg-slate-900">
-        <!-- wrapper -->
-        <div class="w-4/5 max-w-screen-lg p-9 bg-white rounded-lg">
+
+    <body
+        class="flex items-center justify-center min-h-screen bg-neutral-900 text-neutral-200 font-Open-Sans"
+    >
+        <header
+            class="w-11/12 max-w-screen-xl absolute top-0 left-0 right-0 flex justify-between m-auto p-5"
+        >
+            <div class="flex gap-4 items-center">
+                <div class="text-sm font-bold font-Space-Mono tracking-wide">
+                    victyped
+                </div>
+                <div class="text-xs">
+                    typing
+                    <a href="/test" class="underline hover:underline">test</a> /
+                    <a href="/" class="hover:underline">practise</a>
+                </div>
+            </div>
+            <div>
+                <select
+                    id="lang"
+                    class="px-2 py-1 bg-transparent text-xs border border-gray-500 rounded"
+                >
+                    <option value="en" class="bg-gray-400">English</option>
+                    <option value="es" class="bg-gray-400">
+                        Spanish (Español)
+                    </option>
+                </select>
+            </div>
+        </header>
+
+        <!-- typing zone -->
+        <div class="w-9/12 max-w-screen-lg m-auto space-y-8">
             <input
                 type="text"
                 id="input"
                 autocomplete="off"
                 class="absolute -z-50 opacity-0"
             />
-            <!-- content box -->
-            <div class="pt-3 px-5 border border-slate-700 rounded-lg">
+            <div class="flex gap-1 text-xs">
+                Test duration:
+                <div>
+                    <input
+                        type="radio"
+                        name="test-duration"
+                        id="test-duration-15s"
+                        value="15"
+                        class="peer appearance-none"
+                    />
+                    <label
+                        for="test-duration-15s"
+                        class="peer-checked:underline"
+                        >15 seconds</label
+                    >
+                </div>
+                |
+                <div>
+                    <input
+                        type="radio"
+                        name="test-duration"
+                        id="test-duration-30s"
+                        value="30"
+                        class="peer appearance-none"
+                    />
+                    <label
+                        for="test-duration-30s"
+                        class="peer-checked:underline"
+                        >30 seconds</label
+                    >
+                </div>
+                |
+                <div>
+                    <input
+                        type="radio"
+                        name="test-duration"
+                        id="test-duration-60s"
+                        value="60"
+                        class="peer appearance-none"
+                        checked
+                    />
+                    <label
+                        for="test-duration-60s"
+                        class="peer-checked:underline"
+                        >60 seconds</label
+                    >
+                </div>
+            </div>
+            <div class="w-full space-y-8">
                 <!-- typing words -->
                 <div
                     id="typing-words"
-                    class="typing-words md:text-xl font-mono tracking-widest break-words"
+                    class="typing-words md:text-xl font-Space-Mono text-gray-400 tracking-widest text-justify"
                 ></div>
-                <!-- content -->
+                <!-- typing content -->
                 <div
-                    class="flex justify-between items-end md:items-center gap-5 mt-4 py-3 border-t border-slate-700"
+                    class="flex justify-between items-end md:items-center gap-5"
                 >
                     <ul
                         class="result-details md:flex justify-between w-full max-w-md"
@@ -74,6 +155,14 @@
             </div>
         </div>
 
+        <!-- moment.js -->
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
+            integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        ></script>
+        <script src="https://cdn.jsdelivr.net/npm/moment-timer/lib/moment-timer.js"></script>
         <script type="module" src="./index.js"></script>
     </body>
 </html>

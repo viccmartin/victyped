@@ -4,7 +4,7 @@
     "description": "",
     "scripts": {
         "start": "npx parcel src/index.html",
-        "build": "parcel build src/index.html"
+        "build": "parcel build src/index.html "
     },
     "keywords": [],
     "author": "",

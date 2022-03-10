@@ -521,7 +521,7 @@ export default words = {
         "subject",
         "region",
         "size",
-        "vary",
+        "lety",
         "settle",
         "speak",
         "weight",
