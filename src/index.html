@@ -12,21 +12,17 @@
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
             integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
             crossorigin="anonymous"
-            referrerpolicy="no-referrer"
-        />
+            referrerpolicy="no-referrer" />
         <!-- fonts -> Mono = Space mono / Sans = Open Sans -->
         <link
             href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&family=Space+Mono&display=swap"
-            rel="stylesheet"
-        />
+            rel="stylesheet" />
     </head>
 
     <body
-        class="flex items-center justify-center min-h-screen bg-neutral-900 text-neutral-200 font-Open-Sans"
-    >
+        class="flex items-center justify-center min-h-screen bg-neutral-900 text-neutral-200 font-Open-Sans">
         <header
-            class="w-11/12 max-w-screen-xl absolute top-0 left-0 right-0 flex justify-between m-auto p-5"
-        >
+            class="w-11/12 max-w-screen-xl absolute top-0 left-0 right-0 flex justify-between m-auto p-5">
             <div class="flex gap-4 items-center">
                 <div class="text-sm font-bold font-Space-Mono tracking-wide">
                     victyped
@@ -37,16 +33,37 @@
                     <a href="/" class="hover:underline">practise</a>
                 </div>
             </div>
-            <div>
-                <select
-                    id="lang"
-                    class="px-2 py-1 bg-transparent text-xs border border-gray-500 rounded"
-                >
-                    <option value="en" class="bg-gray-400">English</option>
-                    <option value="es" class="bg-gray-400">
-                        Spanish (Español)
-                    </option>
-                </select>
+            <div class="flex gap-1 text-sm text-neutral-400 font-Space-Mono">
+                <div>
+                    <input
+                        type="radio"
+                        name="lang"
+                        id="lang-en"
+                        value="en"
+                        class="peer appearance-none hidden"
+                        checked />
+                    <label
+                        for="lang-en"
+                        title="English"
+                        class="peer-checked:text-neutral-200 cursor-pointer"
+                        >en</label
+                    >
+                </div>
+                /
+                <div>
+                    <input
+                        type="radio"
+                        name="lang"
+                        id="lang-es"
+                        value="es"
+                        class="peer appearance-none hidden" />
+                    <label
+                        for="lang-es"
+                        title="Spanish (Español)"
+                        class="peer-checked:text-neutral-200 cursor-pointer"
+                        >es</label
+                    >
+                </div>
             </div>
         </header>
 
@@ -56,8 +73,7 @@
                 type="text"
                 id="input"
                 autocomplete="off"
-                class="absolute -z-50 opacity-0"
-            />
+                class="absolute -z-50 opacity-0" />
             <div class="flex gap-1 text-xs">
                 Test duration:
                 <div>
@@ -66,11 +82,10 @@
                         name="test-duration"
                         id="test-duration-15s"
                         value="15"
-                        class="peer appearance-none"
-                    />
+                        class="peer appearance-none" />
                     <label
                         for="test-duration-15s"
-                        class="peer-checked:underline"
+                        class="peer-checked:underline cursor-pointer"
                         >15 seconds</label
                     >
                 </div>
@@ -81,11 +96,10 @@
                         name="test-duration"
                         id="test-duration-30s"
                         value="30"
-                        class="peer appearance-none"
-                    />
+                        class="peer appearance-none" />
                     <label
                         for="test-duration-30s"
-                        class="peer-checked:underline"
+                        class="peer-checked:underline cursor-pointer"
                         >30 seconds</label
                     >
                 </div>
@@ -97,11 +111,10 @@
                         id="test-duration-60s"
                         value="60"
                         class="peer appearance-none"
-                        checked
-                    />
+                        checked />
                     <label
                         for="test-duration-60s"
-                        class="peer-checked:underline"
+                        class="peer-checked:underline cursor-pointer"
                         >60 seconds</label
                     >
                 </div>
@@ -110,34 +123,37 @@
                 <!-- typing words -->
                 <div
                     id="typing-words"
-                    class="typing-words md:text-xl font-Space-Mono text-gray-400 tracking-widest text-justify"
-                ></div>
+                    class="typing-words md:text-xl font-Space-Mono text-gray-400 tracking-widest text-justify"></div>
                 <!-- typing content -->
                 <div
-                    class="flex justify-between items-end md:items-center gap-5"
-                >
+                    class="flex justify-between items-end md:items-center gap-5">
                     <ul
-                        class="result-details md:flex justify-between w-full max-w-md"
-                    >
-                        <li class="time flex gap-2 items-center">
-                            <p class="text-xs md:text-lg">Time Left:</p>
+                        class="result-details md:flex justify-between w-full max-w-md">
+                        <li
+                            class="time flex gap-2 items-center"
+                            title="Time Left">
+                            <p class="text-xs md:text-lg">Time left:</p>
                             <span id="time" class="block text-sm md:text-xl"
                                 ><b>60</b>s</span
                             >
                         </li>
-                        <li class="flex gap-2 items-center">
+                        <li class="flex gap-2 items-center" title="Mistakes">
                             <p class="text-xs md:text-lg">Mistakes:</p>
                             <span id="mistake" class="block text-sm md:text-xl"
                                 >0</span
                             >
                         </li>
-                        <li class="flex gap-2 items-center">
+                        <li
+                            class="flex gap-2 items-center"
+                            title="Words Per Minute">
                             <p class="text-xs md:text-lg">WPM:</p>
                             <span id="wpm" class="block text-sm md:text-xl"
                                 >0</span
                             >
                         </li>
-                        <li class="flex gap-2 items-center">
+                        <li
+                            class="flex gap-2 items-center"
+                            title="Characters Per Minutes">
                             <p class="text-xs md:text-lg">CPM:</p>
                             <span id="cpm" class="block text-sm md:text-xl"
                                 >0</span
@@ -147,8 +163,7 @@
                     <button
                         type="button"
                         id="reset"
-                        title="Reset the current test"
-                    >
+                        title="Reset the current test">
                         <i class="fa-solid fa-arrow-rotate-right"></i>
                     </button>
                 </div>
@@ -160,8 +175,7 @@
             src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
             integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
             crossorigin="anonymous"
-            referrerpolicy="no-referrer"
-        ></script>
+            referrerpolicy="no-referrer"></script>
         <script src="https://cdn.jsdelivr.net/npm/moment-timer/lib/moment-timer.js"></script>
         <script type="module" src="./index.js"></script>
     </body>

@@ -4,6 +4,7 @@ import words from "./scripts/words";
 const d = document;
 const typingWords = d.getElementById("typing-words"),
     input = d.getElementById("input"),
+    langEls = d.querySelectorAll("input[name='lang']"),
     testDurationEls = d.querySelectorAll("input[name='test-duration']"),
     mistakeEl = d.getElementById("mistake"),
     timeEl = d.querySelector("#time b"),
@@ -13,15 +14,17 @@ const typingWords = d.getElementById("typing-words"),
 
 let charIndex = 0,
     mistake = 0,
-    isTyping = false;
-// timer
-let timer,
+    isTyping = false,
+    // lang
+    wordsLang = words.en,
+    // timer
+    timer,
     maxTime = 60,
     timeLeft = maxTime;
 
 // || FUNTIONS
 const getRandomWords = () => {
-    let randomWords = words.en
+    let randomWords = wordsLang
         .sort(() => Math.random() - Math.random())
         .slice(0, 30);
     typingWords.innerHTML = "";
@@ -79,6 +82,10 @@ const initTimer = () => {
         clearInterval(timer);
     }
 };
+const changeLang = (e) => {
+    wordsLang = words[`${e.target.value}`];
+    getRandomWords();
+};
 const changeTestDuration = (e) => {
     if (isTyping) resetTest();
     maxTime = parseFloat(e.target.value);
@@ -109,6 +116,7 @@ d.addEventListener("keydown", () => input.focus());
 typingWords.addEventListener("click", () => input.focus());
 input.addEventListener("input", initTyping);
 resetBtn.addEventListener("click", resetTest);
+langEls.forEach((el) => el.addEventListener("input", changeLang));
 testDurationEls.forEach((el) =>
     el.addEventListener("input", changeTestDuration)
 );
