@@ -15,6 +15,11 @@ const typingWords = d.getElementById("typing-words"),
 let charIndex = 0,
     mistake = 0,
     isTyping = false,
+    amountWords = 30,
+    currentWords = amountWords,
+    randomWords,
+    lastSpan = d.createElement("span"),
+    totalChars = 0,
     // lang
     wordsLang = words.en,
     // timer
@@ -24,33 +29,49 @@ let charIndex = 0,
 
 // || FUNTIONS
 const getRandomWords = () => {
-    let randomWords = wordsLang
-        .sort(() => Math.random() - Math.random())
-        .slice(0, 30);
     typingWords.innerHTML = "";
+    randomWords = wordsLang.sort(() => Math.random() - Math.random());
     randomWords
+        .slice(0, currentWords)
         .join(" ")
         .split("")
         .forEach((word) => {
             let span = `<span>${word}</span>`;
             typingWords.innerHTML += span;
         });
+    typingWords.insertAdjacentElement("beforeend", lastSpan);
+};
+const loadMoreWords = () => {
+    typingWords.innerHTML = "";
+    input.value = "";
+    charIndex = 0;
+    randomWords
+        .slice(currentWords, currentWords + amountWords)
+        .join(" ")
+        .split("")
+        .forEach((word) => {
+            let span = `<span>${word}</span>`;
+            typingWords.innerHTML += span;
+        });
+    currentWords = currentWords + amountWords;
+    typingWords.insertAdjacentElement("beforeend", lastSpan);
 };
 const initTyping = () => {
     let characters = typingWords.querySelectorAll("span");
     let typedChar = input.value.split("")[charIndex];
-    console.log(maxTime);
-    if (charIndex < characters.length - 1 && timeLeft > 0) {
+    if (timeLeft > 0) {
         if (!isTyping) {
             timer = setInterval(initTimer, 1000);
             isTyping = true;
         }
         if (typedChar == null) {
+            totalChars--;
             charIndex--;
             if (characters[charIndex].classList.contains("incorrect"))
                 mistake--;
             characters[charIndex].classList.remove("correct", "incorrect");
         } else {
+            totalChars++;
             if (characters[charIndex].innerHTML === typedChar) {
                 characters[charIndex].classList.add("correct");
             } else {
@@ -59,16 +80,17 @@ const initTyping = () => {
             }
             charIndex++;
         }
+        if (charIndex > characters.length - 1) loadMoreWords();
 
         characters.forEach((character) => character.classList.remove("active"));
         characters[charIndex].classList.add("active");
         let wpm = Math.round(
-            ((charIndex - mistake) / 5 / (maxTime - timeLeft)) * 60
+            ((totalChars - mistake) / 5 / (maxTime - timeLeft)) * 60
         );
         wpm = wpm < 0 || !wpm || wpm === Infinity ? 0 : wpm;
         mistakeEl.innerHTML = mistake;
         wpmEl.innerHTML = wpm;
-        cpmEl.innerHTML = charIndex - mistake;
+        cpmEl.innerHTML = totalChars - mistake;
     } else {
         input.value = "";
         clearInterval(timer);
@@ -83,20 +105,21 @@ const initTimer = () => {
     }
 };
 const changeLang = (e) => {
+    resetTest();
     wordsLang = words[`${e.target.value}`];
     getRandomWords();
 };
 const changeTestDuration = (e) => {
-    if (isTyping) resetTest();
+    resetTest();
     maxTime = parseFloat(e.target.value);
     timeLeft = maxTime;
     timeEl.innerHTML = maxTime;
-    console.log(parseFloat(e.target.value));
 };
 const resetTest = () => {
     input.value = "";
     charIndex = 0;
     mistake = 0;
+    totalChars = 0;
     timeLeft = maxTime;
     isTyping = false;
     timeEl.innerHTML = timeLeft;
