@@ -73,7 +73,6 @@ const loadMoreWords = () => {
         });
     currentWords = currentWords + amountWords;
     a;
-    console.log(currentWords);
     typingWords.insertAdjacentElement("beforeend", lastSpan);
 };
 const initTyping = () => {
