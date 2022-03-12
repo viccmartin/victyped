@@ -1,6 +1,7 @@
 import words from "./scripts/words";
 
-// || GLOBAL VARIBLES
+// ||  GLOBAL VARIBLES
+// - constants
 const d = document;
 const typingWords = d.getElementById("typing-words"),
     input = d.getElementById("input"),
@@ -13,10 +14,11 @@ const typingWords = d.getElementById("typing-words"),
     cpmEl = d.getElementById("cpm"),
     resetBtn = d.getElementById("reset");
 
-// let cache = [];
+// - variables
 let charIndex = 0,
     mistake = 0,
     accuracyMistake = 0,
+    accuracyChars = 0,
     isTyping = false,
     amountWords = 30,
     currentWords = amountWords,
@@ -31,15 +33,6 @@ let charIndex = 0,
     timeLeft = maxTime;
 
 // || FUNTIONS
-// const memoizer = (func) => {
-//     return (e) => {
-//         const index = e.toString();
-//         if (cache[index] == undefined) {
-//             cache[index] = func(e);
-//         }
-//         return cache[index];
-//     };
-// };
 const changeLang = (e) => {
     resetTest();
     wordsLang = words[`${e.target.value}`];
@@ -77,6 +70,8 @@ const loadMoreWords = () => {
             typingWords.innerHTML += span;
         });
     currentWords = currentWords + amountWords;
+    a;
+    console.log(currentWords);
     typingWords.insertAdjacentElement("beforeend", lastSpan);
 };
 const initTyping = () => {
@@ -94,7 +89,6 @@ const initTyping = () => {
                 mistake--;
             characters[charIndex].classList.remove("correct", "incorrect");
         } else {
-            totalChars++;
             if (characters[charIndex].innerHTML === typedChar) {
                 characters[charIndex].classList.add("correct");
             } else {
@@ -102,6 +96,8 @@ const initTyping = () => {
                 accuracyMistake++;
                 characters[charIndex].classList.add("incorrect");
             }
+            accuracyChars++;
+            totalChars++;
             charIndex++;
         }
         if (charIndex > characters.length - 1) loadMoreWords();
@@ -113,10 +109,9 @@ const initTyping = () => {
         );
         wpm = wpm < 0 || !wpm || wpm === Infinity ? 0 : wpm;
         let accuracy = Math.round(
-            ((totalChars - accuracyMistake) / totalChars) * 100
+            ((accuracyChars - accuracyMistake) / accuracyChars) * 100
         );
         mistakeEl.innerHTML = mistake;
-        console.log(totalChars);
         accuracyEl.innerHTML = `${accuracy}%`;
         wpmEl.innerHTML = wpm;
         cpmEl.innerHTML = totalChars - mistake;
@@ -138,9 +133,12 @@ const resetTest = () => {
     charIndex = 0;
     mistake = 0;
     accuracyMistake = 0;
-    totalChars = 0;
-    timeLeft = maxTime;
+    accuracyChars = 0;
     isTyping = false;
+    amountWords = 30;
+    currentWords = amountWords;
+    randomWords;
+    totalChars = 0;
     timeEl.innerHTML = timeLeft;
     mistakeEl.innerHTML = mistake;
     accuracyEl.innerHTML = 0;
@@ -163,21 +161,3 @@ langEls.forEach((el) => el.addEventListener("input", changeLang));
 testDurationEls.forEach((el) =>
     el.addEventListener("input", changeTestDuration)
 );
-
-// const cache = await caches.open("words");
-if ("caches" in window) {
-    caches.open("my-cache").then(function (cache_obj) {
-        cache_obj.add("./scripts/words").then(function () {
-            console.log("Cached!");
-        });
-    });
-}
-async function eee() {
-    try {
-        const data = await caches.open("my-cache");
-        console.log({ data });
-    } catch (error) {
-        console.error({ error });
-    }
-}
-eee();
