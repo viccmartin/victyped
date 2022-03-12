@@ -6,13 +6,13 @@
     @apply relative;
 }
 .typing-words span.active::before {
-    @apply content-[""] absolute -top-px -bottom-px -left-0.5 w-0.5 bg-yellow-400 animate-pulse;
+    @apply content-[""] absolute -top-px -bottom-px -left-0.5 w-0.5 bg-yellow-400 transition animate-pulse;
 }
 .typing-words span.correct {
-    @apply text-gray-200;
+    @apply text-gray-100;
 }
 .typing-words span.incorrect {
-    @apply text-red-700;
+    @apply bg-red-700 text-gray-100;
 }
 .typing-words::-webkit-scrollbar {
     width: 0;

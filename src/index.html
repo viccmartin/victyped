@@ -16,14 +16,14 @@
             integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
             crossorigin="anonymous"
             referrerpolicy="no-referrer" />
-        <!-- fonts -> Mono = Space mono / Sans = Open Sans -->
+        <!-- fonts -> Mono = Space mono / Sans = Lato -->
         <link
-            href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&family=Space+Mono&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&family=Space+Mono&display=swap"
             rel="stylesheet" />
     </head>
 
     <body
-        class="flex items-center justify-center min-h-screen bg-neutral-900 text-neutral-200 font-Open-Sans">
+        class="flex items-center justify-center min-h-screen bg-neutral-900 text-neutral-100 font-Lato">
         <header
             class="w-11/12 max-w-screen-xl absolute top-0 left-0 right-0 flex justify-between m-auto p-5">
             <div class="flex gap-4 items-center">
@@ -38,7 +38,7 @@
                 </div>
             </div>
             <div
-                class="flex gap-1 text-sm md:text-base text-neutral-400 font-Space-Mono">
+                class="flex gap-1 text-sm md:text-base text-neutral-300 font-Space-Mono">
                 <div>
                     <input
                         type="radio"
@@ -50,7 +50,7 @@
                     <label
                         for="lang-en"
                         title="English"
-                        class="peer-checked:text-neutral-200 cursor-pointer"
+                        class="peer-checked:text-neutral-100 cursor-pointer"
                         >en</label
                     >
                 </div>
@@ -65,7 +65,7 @@
                     <label
                         for="lang-es"
                         title="Spanish (Español)"
-                        class="peer-checked:text-neutral-200 cursor-pointer"
+                        class="peer-checked:text-neutral-100 cursor-pointer"
                         >es</label
                     >
                 </div>
@@ -79,7 +79,8 @@
                 id="input"
                 autocomplete="off"
                 class="absolute -z-50 opacity-0" />
-            <div class="flex gap-1 text-xs">
+            <!-- test time duration -->
+            <div class="flex gap-1 text-xs text-gray-200">
                 Test duration:
                 <div>
                     <input
@@ -133,44 +134,69 @@
                 <div
                     class="flex justify-between items-end md:items-center gap-5">
                     <ul
-                        class="result-details md:flex justify-between w-full max-w-md">
+                        class="result-details grid grid-cols-3 md:grid-cols-6 gap-y-8 md:justify-items-start w-full">
                         <li
-                            class="time flex gap-2 items-center"
+                            class="flex flex-col gap-2 items-center"
                             title="Time Left">
-                            <p class="text-xs md:text-lg">Time left:</p>
-                            <span id="time" class="block text-sm md:text-xl"
-                                ><b>60</b>s</span
+                            <span id="time" class="flex text-3xl md:text-4xl"
+                                ><div>60</div>
+                                s</span
                             >
-                        </li>
-                        <li class="flex gap-2 items-center" title="Mistakes">
-                            <p class="text-xs md:text-lg">Mistakes:</p>
-                            <span id="mistake" class="block text-sm md:text-xl"
-                                >0</span
-                            >
+                            <p class="text-xs text-gray-400 uppercase">
+                                Time Left
+                            </p>
                         </li>
                         <li
-                            class="flex gap-2 items-center"
+                            class="flex flex-col gap-2 items-center"
+                            title="Mistakes">
+                            <span
+                                id="mistake"
+                                class="block text-3xl md:text-4xl"
+                                >0</span
+                            >
+                            <p class="text-xs text-gray-400 uppercase">
+                                Mistakes
+                            </p>
+                        </li>
+                        <li
+                            class="flex flex-col gap-2 items-center"
+                            title="Accuracy">
+                            <span
+                                id="accuracy"
+                                class="block text-3xl md:text-4xl"
+                                >0<span>%</span></span
+                            >
+                            <p class="text-xs text-gray-400 uppercase">
+                                Accuracy
+                            </p>
+                        </li>
+                        <li
+                            class="flex flex-col gap-2 items-center"
                             title="Words Per Minute">
-                            <p class="text-xs md:text-lg">WPM:</p>
-                            <span id="wpm" class="block text-sm md:text-xl"
+                            <span id="wpm" class="block text-3xl md:text-4xl"
                                 >0</span
                             >
+                            <p class="text-xs text-gray-400 uppercase">WPM</p>
                         </li>
                         <li
-                            class="flex gap-2 items-center"
+                            class="flex flex-col gap-2 items-center"
                             title="Characters Per Minutes">
-                            <p class="text-xs md:text-lg">CPM:</p>
-                            <span id="cpm" class="block text-sm md:text-xl"
+                            <span id="cpm" class="block text-3xl md:text-4xl"
                                 >0</span
                             >
+                            <p class="text-xs text-gray-400 uppercase">CPM</p>
+                        </li>
+                        <li
+                            class="md:justify-self-end md:self-center flex justify-center items-center">
+                            <button
+                                type="button"
+                                id="reset"
+                                title="Reset the current test">
+                                <i
+                                    class="fa-solid fa-arrow-rotate-right text-xl md:text-2xl"></i>
+                            </button>
                         </li>
                     </ul>
-                    <button
-                        type="button"
-                        id="reset"
-                        title="Reset the current test">
-                        <i class="fa-solid fa-arrow-rotate-right"></i>
-                    </button>
                 </div>
             </div>
         </div>
