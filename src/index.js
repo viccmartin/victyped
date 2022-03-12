@@ -34,6 +34,8 @@ let charIndex = 0,
 
 // || FUNTIONS
 const changeLang = (e) => {
+    timer, (maxTime = 60);
+    timeLeft = maxTime;
     resetTest();
     wordsLang = words[`${e.target.value}`];
     getRandomWords();
