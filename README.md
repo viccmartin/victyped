@@ -4,7 +4,7 @@
 
 Try It here: https://victyped.netlify.app/
 
-This web application will help you test your typing speed by giving you the most common words, either in English or Spanish, so you can improve your typing skills.
+This web application will  test your typing speed by giving you the most common words, either in English or Spanish.
 
 I built this project - web application - with pure HTML, CSS (TailwindCSS), and vanilla JavaScript to improve my knowledge and experience with the basics of frontend development tools.
 
