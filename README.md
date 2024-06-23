@@ -10,11 +10,16 @@ I built this project - web application - with pure HTML, CSS (TailwindCSS), and 
 
 ## Tech Stack
 
-**Frontend:** HTML, TailwindCSS, Vanilla JavaScript
+- **Frontend:** HTML, TailwindCSS, Vanilla JavaScript
 
-**Bundler:** Parcel
+- **Bundler:** Parcel
 
-**Deploy:** Netlify
+- **Deploy:** Netlify
+## Features
+- Test Durations: Options for 15, 30, or 60-second typing tests.
+- Real-Time Metrics: Displays time left, number of mistakes, accuracy percentage, Words Per Minute (WPM), and Characters Per Minute (CPM).
+- Language Support: Interface available in English and Spanish.
+- Responsive Design: Suitable for various devices and screen sizes.
 
 ## Author
 
